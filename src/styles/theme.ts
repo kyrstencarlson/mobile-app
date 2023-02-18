@@ -87,8 +87,8 @@ const ThemeConfig = extendTheme({
             baseStyle: {
                 _light: {
                     trackColor: {
-                        true: colors.primary,
-                        false: colors.grey
+                        true: colors.white,
+                        false: colors.white
                     },
                     thumbColor: {
                         true: colors.white,
@@ -97,7 +97,7 @@ const ThemeConfig = extendTheme({
                 },
                 _dark: {
                     trackColor: {
-                        true: colors.grey,
+                        true: colors.white,
                         false: colors.white
                     },
                     thumbColor: {

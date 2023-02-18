@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Switch, useColorMode } from 'native-base';
 import { colorModeManager } from '../../App';
-import Layout from '../components/Layout';
 import { Text } from 'native-base';
+import { Card, Layout } from '../components/shared';
+import { useGetColorMode } from '../utils/colorMode';
 
 const HomeScreen = () => {
 
-    const { colorMode, toggleColorMode } = useColorMode();
-    const isDark = colorMode === 'dark';
+    const { toggleColorMode } = useColorMode();
+    const isDark = useGetColorMode();
 
     const onChange = () => {
         toggleColorMode();
@@ -17,17 +18,16 @@ const HomeScreen = () => {
 
     return (
         <Layout style={styles.container}>
-            <View style={styles.flex}>
+            <Card style={styles.flex}>
                 <Text style={styles.text}>Dark Mode</Text>
                 <Switch
                     size='sm'
                     onToggle={onChange}
                     value={isDark}
-                    thumbColor={isDark ? 'dimgrey' : 'purple'}
-                    trackColor={{ true: 'lightgrey' }}
+                    offTrackColor={'black'}
+                    thumbColor={isDark ? 'dimgrey' : 'white'}
                 />
-            </View>
-
+            </Card>
         </Layout>
     );
 };
@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     flex: {
-        width: '85%',
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Text } from 'native-base';
-import Layout from '../components/Layout';
+import { Layout } from '../components/shared';
 
 const HomeScreen = () => (
     <Layout style={styles.container}>

@@ -1,14 +1,13 @@
 /* eslint-disable react/no-unstable-nested-components */
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeScreen from '../screens/Home';
 import SettingsScreen from '../screens/Settings';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from 'react-native';
 import { deviceHeight } from '../utils/dimensions';
-import DetailsScreen from '../screens/Details';
 import { useColorMode } from 'native-base';
-import { useHeaderOpts } from '../utils/headerOpts';
+import HomeStack from './Home';
+import DetailsStack from './Details';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,25 +22,20 @@ const MainStack = () => {
 
     return (
         <Tab.Navigator
-            initialRouteName='Home'
+            initialRouteName='HomeStack'
             screenOptions={{
                 tabBarStyle: [styles.tabBarBackground, { backgroundColor }],
                 tabBarShowLabel: false,
                 tabBarActiveTintColor: tint,
-                tabBarInactiveTintColor: inactive
-                // tabBarBackground: () => (
-                //     <BlurView blurType='light' blurAmount={10} style={StyleSheet.absoluteFill} />
-                // )
+                tabBarInactiveTintColor: inactive,
+                headerShown: false
             }}
         >
             <Tab.Screen
-                name='Home'
-                component={HomeScreen}
+                name='HomeStack'
+                component={HomeStack}
                 options={{
-                    ...useHeaderOpts(),
-                    headerTransparent: true,
-                    headerTitle: '',
-                    tabBarIcon: ({ color, size }) => (
+                    tabBarIcon: ({ color }) => (
                         <MaterialIcons
                             name='home'
                             color={color}
@@ -51,13 +45,10 @@ const MainStack = () => {
                 }}
             />
             <Tab.Screen
-                name='Details'
-                component={DetailsScreen}
+                name='DetailsStack'
+                component={DetailsStack}
                 options={{
-                    ...useHeaderOpts(),
-                    headerTransparent: true,
-                    headerTitle: '',
-                    tabBarIcon: ({ color, size }) => (
+                    tabBarIcon: ({ color }) => (
                         <MaterialIcons
                             name='book'
                             color={color}
@@ -70,10 +61,7 @@ const MainStack = () => {
                 name='Settings'
                 component={SettingsScreen}
                 options={{
-                    ...useHeaderOpts(),
-                    headerTransparent: true,
-                    headerTitle: '',
-                    tabBarIcon: ({ color, size }) => (
+                    tabBarIcon: ({ color }) => (
                         <MaterialIcons
                             name='settings'
                             color={color}
