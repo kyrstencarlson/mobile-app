@@ -7,63 +7,84 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet } from 'react-native';
 import { deviceHeight } from '../utils/dimensions';
 import DetailsScreen from '../screens/Details';
+import { useColorMode } from 'native-base';
+import { useHeaderOpts } from '../utils/headerOpts';
 
 const Tab = createBottomTabNavigator();
 
-const MainStack = () => (
-    <Tab.Navigator
-        initialRouteName='Home'
-        screenOptions={{
-            tabBarStyle: styles.tabBarBackground,
-            tabBarShowLabel: false,
-            tabBarActiveTintColor: 'purple',
-            tabBarInactiveTintColor: 'grey'
-            // tabBarBackground: () => (
-            //     <BlurView blurType='light' blurAmount={10} style={StyleSheet.absoluteFill} />
-            // )
-        }}
-    >
-        <Tab.Screen
-            name='Home'
-            component={HomeScreen}
-            options={{
-                tabBarIcon: ({ color, size }) => (
-                    <MaterialIcons
-                        name='home'
-                        color={color}
-                        size={30}
-                    />
-                )
+const MainStack = () => {
+
+    const { colorMode } = useColorMode();
+    const isDark = colorMode === 'dark';
+
+    const backgroundColor = isDark ? 'dimgrey' : 'lightgrey';
+    const tint = isDark ? 'plum' : 'purple';
+    const inactive = isDark ? 'lightgrey' : 'grey';
+
+    return (
+        <Tab.Navigator
+            initialRouteName='Home'
+            screenOptions={{
+                tabBarStyle: [styles.tabBarBackground, { backgroundColor }],
+                tabBarShowLabel: false,
+                tabBarActiveTintColor: tint,
+                tabBarInactiveTintColor: inactive
+                // tabBarBackground: () => (
+                //     <BlurView blurType='light' blurAmount={10} style={StyleSheet.absoluteFill} />
+                // )
             }}
-        />
-        <Tab.Screen
-            name='Details'
-            component={DetailsScreen}
-            options={{
-                tabBarIcon: ({ color, size }) => (
-                    <MaterialIcons
-                        name='book'
-                        color={color}
-                        size={30}
-                    />
-                )
-            }}
-        />
-        <Tab.Screen
-            name='Settings'
-            component={SettingsScreen}
-            options={{
-                tabBarIcon: ({ color, size }) => (
-                    <MaterialIcons
-                        name='settings'
-                        color={color}
-                        size={30}
-                    />
-                )
-            }}
-        />
-    </Tab.Navigator>
-);
+        >
+            <Tab.Screen
+                name='Home'
+                component={HomeScreen}
+                options={{
+                    ...useHeaderOpts(),
+                    headerTransparent: true,
+                    headerTitle: '',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons
+                            name='home'
+                            color={color}
+                            size={30}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name='Details'
+                component={DetailsScreen}
+                options={{
+                    ...useHeaderOpts(),
+                    headerTransparent: true,
+                    headerTitle: '',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons
+                            name='book'
+                            color={color}
+                            size={30}
+                        />
+                    )
+                }}
+            />
+            <Tab.Screen
+                name='Settings'
+                component={SettingsScreen}
+                options={{
+                    ...useHeaderOpts(),
+                    headerTransparent: true,
+                    headerTitle: '',
+                    tabBarIcon: ({ color, size }) => (
+                        <MaterialIcons
+                            name='settings'
+                            color={color}
+                            size={30}
+                        />
+                    )
+                }}
+            />
+        </Tab.Navigator>
+    );
+};
 
 const styles = StyleSheet.create({
     tabBarBackground: {
@@ -76,7 +97,6 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         justifyContent: 'center',
         borderRadius: 20,
-        backgroundColor: 'lightgrey',
         paddingTop: 20
     }
 });

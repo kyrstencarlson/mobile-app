@@ -1,14 +1,20 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { Text } from 'native-base';
+import Layout from '../components/Layout';
 
 const HomeScreen = () => (
-    <View style={{
+    <Layout style={styles.container}>
+        <Text>Home!</Text>
+    </Layout>
+);
+
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
-    }}>
-        <Text>Home!</Text>
-    </View>
-);
+    }
+});
 
 export default HomeScreen;

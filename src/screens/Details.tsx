@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import Layout from '../components/Layout';
+import { Text } from 'native-base';
 
 const DetailsScreen = () => (
-    <View style={{
+    <Layout style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'
     }}>
         <Text>Details!</Text>
-    </View>
+    </Layout>
 );
 
 export default DetailsScreen;
