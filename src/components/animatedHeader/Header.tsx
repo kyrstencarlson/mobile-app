@@ -1,10 +1,9 @@
 import React from 'react';
-import { colors } from '../../styles';
 import { StyleSheet } from 'react-native';
 import Animated, { Extrapolate, interpolateNode } from 'react-native-reanimated';
 import { Text } from 'native-base';
-import { typography } from '../../styles';
-import { deviceHeight } from '../../utils/dimensions';
+import { typography, colors } from '@styles';
+import { deviceHeight } from '@utils/dimensions';
 import { albumData } from './Data';
 
 interface Props {

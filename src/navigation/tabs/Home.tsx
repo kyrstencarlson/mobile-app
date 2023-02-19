@@ -1,8 +1,8 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../screens/Home';
-import { useHeaderOpts } from '../utils/headerOpts';
+import Home from '@screens/Home';
+import { useHeaderOpts } from '@utils/headerOpts';
 
 export type HomeStackParamsList = {
     Home: undefined;

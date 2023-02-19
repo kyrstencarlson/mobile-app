@@ -1,16 +1,14 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Button, Text } from 'native-base';
-import { DetailsStackParamsList } from '../../navigation/Details';
 import { StackScreenProps } from '@react-navigation/stack';
 import Animated, { multiply, min } from 'react-native-reanimated';
-import { colors } from '../../styles';
-import { Cover } from './Cover';
-import { Header, HEADER_DELTA, MAX_HEADER_HEIGHT } from './Header';
-import { Content } from './Content';
+import { Content, Cover, Header, HEADER_DELTA, MAX_HEADER_HEIGHT } from '../components/animatedHeader';
+import { colors } from '../styles';
+import { FeatureStackParamsList } from '../navigation/tabs/Features';
 
 
-export type Props = StackScreenProps<DetailsStackParamsList, 'AnimatedHeader'>;
+export type Props = StackScreenProps<FeatureStackParamsList, 'AnimatedHeader'>;
 
 const AnimatedHeader = () => {
 

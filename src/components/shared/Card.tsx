@@ -1,8 +1,8 @@
 import React from 'react';
 import { Pressable, StyleSheet, ViewStyle } from 'react-native';
-import { deviceWidth } from '../../utils/dimensions';
-import { useGetColorMode } from '../../utils/colorMode';
-import ThemeConfig from '../../styles/theme';
+import { deviceWidth } from '@utils/dimensions';
+import { useGetColorMode } from '@utils/colorMode';
+import ThemeConfig from '@styles/theme';
 
 interface CardProps {
     children: React.ReactNode;

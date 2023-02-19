@@ -3,9 +3,9 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import Animated, { Extrapolate, interpolateNode } from 'react-native-reanimated';
 import { HEADER_DELTA, MAX_HEADER_HEIGHT } from './Header';
-import { colors } from '../../styles';
+import { colors } from '@styles';
 import { Image } from 'native-base';
-import { deviceWidth } from '../../utils/dimensions';
+import { deviceWidth } from '@utils/dimensions';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const image = require('../../assets/posty.jpeg');

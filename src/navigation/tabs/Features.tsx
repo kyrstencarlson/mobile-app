@@ -1,19 +1,20 @@
 import 'react-native-gesture-handler';
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Details from '../screens/Details';
-import { useHeaderOpts } from '../utils/headerOpts';
-import AnimatedHeader from '../components/animatedHeader/AnimatedHeader';
-import { HeaderButton } from '../components/shared/HeaderButton';
+import { HeaderButton } from '@components/shared/HeaderButton';
+import AnimatedHeader from '@screens/AnimatedHeader';
+import { useHeaderOpts } from '@utils/headerOpts';
+import FeatureScreen from '@screens/Features';
 
-export type DetailsStackParamsList = {
-    Details: undefined;
+
+export type FeatureStackParamsList = {
+    Features: undefined;
     AnimatedHeader: undefined;
 };
 
-const Stack = createStackNavigator<DetailsStackParamsList>();
+const Stack = createStackNavigator<FeatureStackParamsList>();
 
-const DetailsStack = () => (
+const FeatureStack = () => (
 
     <Stack.Navigator>
         <Stack.Screen
@@ -22,8 +23,8 @@ const DetailsStack = () => (
                 headerTransparent: true,
                 headerTitle: ''
             }}
-            name='Details'
-            component={Details}
+            name='Features'
+            component={FeatureScreen}
         />
         <Stack.Screen
             options={{
@@ -38,4 +39,4 @@ const DetailsStack = () => (
     </Stack.Navigator>
 );
 
-export default DetailsStack;
+export default FeatureStack;

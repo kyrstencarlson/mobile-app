@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import Animated, { Extrapolate, interpolateNode } from 'react-native-reanimated';
 import { MAX_HEADER_HEIGHT } from './Header';
 import { Text } from 'native-base';
-import { colors, spacing, typography } from '../../styles';
+import { colors, spacing, typography } from '@styles';
 import { Data } from './Data';
 import LinearGradient from 'react-native-linear-gradient';
 import { albumData } from './Data';

@@ -4,12 +4,12 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SettingsScreen from '../screens/Settings';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, ViewStyle } from 'react-native';
-import { deviceHeight } from '../utils/dimensions';
+import { deviceHeight } from '@utils/dimensions';
 import { useColorMode } from 'native-base';
-import HomeStack from './Home';
-import DetailsStack from './Details';
 import { navRef } from '../../App';
-import ThemeConfig from '../styles/theme';
+import ThemeConfig from '@styles/theme';
+import FeatureStack from './tabs/Features';
+import HomeStack from './tabs/Home';
 
 const Tab = createBottomTabNavigator();
 
@@ -76,8 +76,8 @@ const MainStack = () => {
                 }}
             />
             <Tab.Screen
-                name='DetailsStack'
-                component={DetailsStack}
+                name='FeatureStack'
+                component={FeatureStack}
                 options={{
                     tabBarIcon: ({ color }) => (
                         <MaterialIcons

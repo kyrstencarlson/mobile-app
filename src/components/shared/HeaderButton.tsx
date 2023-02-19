@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, TextStyle, ViewProps } from 'react-native';
-import { Icon } from '../../utils/Icon';
+import { Icon } from '@utils/Icon';
 import { useNavigation } from '@react-navigation/native';
 
 

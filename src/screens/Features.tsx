@@ -4,11 +4,11 @@ import { StyleSheet, View } from 'react-native';
 import { Card, Layout } from '../components/shared';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { DetailsStackParamsList } from '../navigation/Details';
+import { FeatureStackParamsList } from '../navigation/tabs/Features';
 
-const DetailsScreen = () => {
+const FeatureScreen = () => {
 
-    const navigation = useNavigation<StackNavigationProp<DetailsStackParamsList>>();
+    const navigation = useNavigation<StackNavigationProp<FeatureStackParamsList>>();
 
     return (
         <Layout style={styles.container}>
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default DetailsScreen;
+export default FeatureScreen;

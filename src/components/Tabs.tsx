@@ -2,8 +2,8 @@ import React from 'react';
 import { View, StyleSheet, ViewStyle } from 'react-native';
 import { TabView, SceneMap, TabBar, SceneRendererProps } from 'react-native-tab-view';
 import { Text } from 'native-base';
-import { deviceWidth } from '../utils/dimensions';
-import ThemeConfig from '../styles/theme';
+import { deviceWidth } from '@utils/dimensions';
+import ThemeConfig from '@styles/theme';
 
 export interface TabProps {
     tabs: { title: string, key: string, component: JSX.Element }[];

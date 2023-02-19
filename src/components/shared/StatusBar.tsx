@@ -1,6 +1,6 @@
 import { StatusBar } from 'native-base';
 import React from 'react';
-import { useGetColorMode } from '../../utils/colorMode';
+import { useGetColorMode } from '@utils/colorMode';
 
 const MyStatusBar = () => {
 
