@@ -82,30 +82,6 @@ const ThemeConfig = extendTheme({
                     }
                 }
             }
-        },
-        Switch: {
-            baseStyle: {
-                _light: {
-                    trackColor: {
-                        true: colors.white,
-                        false: colors.white
-                    },
-                    thumbColor: {
-                        true: colors.white,
-                        false: colors.white
-                    }
-                },
-                _dark: {
-                    trackColor: {
-                        true: colors.white,
-                        false: colors.white
-                    },
-                    thumbColor: {
-                        true: colors.black,
-                        false: colors.black
-                    }
-                }
-            }
         }
     },
     fontSizes: {

@@ -5,11 +5,13 @@ import { colorModeManager } from '../../App';
 import { Text } from 'native-base';
 import { Card, Layout } from '../components/shared';
 import { useGetColorMode } from '../utils/colorMode';
+import ThemeConfig from '../styles/theme';
 
 const HomeScreen = () => {
 
     const { toggleColorMode } = useColorMode();
     const isDark = useGetColorMode();
+    const colors = ThemeConfig.colors;
 
     const onChange = () => {
         toggleColorMode();
@@ -24,8 +26,12 @@ const HomeScreen = () => {
                     size='sm'
                     onToggle={onChange}
                     value={isDark}
-                    offTrackColor={'black'}
-                    thumbColor={isDark ? 'dimgrey' : 'white'}
+                    offTrackColor={colors.lightBlue[600]}
+                    thumbColor={isDark ? colors.gray[600] : 'white'}
+                    trackColor={{
+                        true: colors.lightBlue[300],
+                        false: colors.lightBlue[600]
+                    }}
                 />
             </Card>
         </Layout>

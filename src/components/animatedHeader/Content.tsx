@@ -3,9 +3,10 @@ import { View, StyleSheet } from 'react-native';
 import Animated, { Extrapolate, interpolateNode } from 'react-native-reanimated';
 import { MAX_HEADER_HEIGHT } from './Header';
 import { Text } from 'native-base';
-import { colors, spacing } from '../../styles';
+import { colors, spacing, typography } from '../../styles';
 import { Data } from './Data';
 import LinearGradient from 'react-native-linear-gradient';
+import { albumData } from './Data';
 
 
 interface Props {
@@ -50,8 +51,8 @@ const Content = ({ scrollY }: Props) => {
                 <View style={styles.textContainer}>
                     <View style={styles.imageTextContainer}>
                         <Animated.View style={[styles.textAlign, { opacity }]}>
-                            <Text color='white'>
-                                Hollywood's Bleeding
+                            <Text color='white' fontSize={typography.xxl} fontWeight='semi_bold'>
+                                {albumData.title}
                             </Text>
                         </Animated.View>
 
@@ -60,7 +61,13 @@ const Content = ({ scrollY }: Props) => {
                             opacity
                         }]}>
                             <Text fontSize='lg' color='white' italic>
-                                Post Malone
+                                {albumData.artist}
+                            </Text>
+                        </Animated.View>
+
+                        <Animated.View style={[styles.subscriptionTagContainer, { opacity }]}>
+                            <Text style={[styles.textAlign, { textTransform: 'uppercase' }]} fontWeight='semi_bold' fontSize='sm' color='white'>
+                                {albumData.genre}
                             </Text>
                         </Animated.View>
 
@@ -89,7 +96,7 @@ const styles = StyleSheet.create({
     subscriptionTagContainer: {
         alignSelf: 'center',
         backgroundColor: colors.primaryBg,
-        width: '22.5%',
+        width: '30%',
         padding: 5,
         borderRadius: 5
     },

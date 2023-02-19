@@ -4,5 +4,5 @@
 
 1. Bottom Navigation
 2. Native Base 3 with Design System
-3. Demo Screens
-4. Animated Scroll
+3. Dark Mode
+4. Animated Image Scroll

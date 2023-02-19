@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import MainStack from './src/navigation/Main';
 import { NativeBaseProvider, ColorMode } from 'native-base';
 import ThemeConfig from './src/styles/theme';
 import type { StorageManager } from 'native-base';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MyStatusBar from './src/components/shared/StatusBar';
+
+export const navRef = React.createRef<NavigationContainerRef<any>>();
 
 export const colorModeManager: StorageManager = {
     get: async () => {
@@ -29,7 +32,8 @@ export const colorModeManager: StorageManager = {
 
 const App = () => (
     <NativeBaseProvider theme={ThemeConfig} colorModeManager={colorModeManager}>
-        <NavigationContainer>
+        <NavigationContainer ref={navRef}>
+            <MyStatusBar />
             <MainStack />
         </NavigationContainer>
     </NativeBaseProvider>

@@ -12,9 +12,9 @@ const DetailsScreen = () => {
 
     return (
         <Layout style={styles.container}>
-            <View style={{ paddingTop: 80 }}>
+            <View style={{ paddingVertical: '20%' }}>
                 <Card onPress={() => navigation.navigate('AnimatedHeader')}>
-                    <Text>Animation Header</Text>
+                    <Text>Animated Image Header</Text>
                 </Card>
             </View>
         </Layout>
