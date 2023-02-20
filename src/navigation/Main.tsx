@@ -41,7 +41,8 @@ const MainStack = () => {
 
         const screenName = navRef.current?.getCurrentRoute()?.name;
         const hideTabBar = [
-            'AnimatedHeader'
+            'AnimatedHeader',
+            'Player'
         ];
 
         if (screenName && hideTabBar.includes(screenName)) {

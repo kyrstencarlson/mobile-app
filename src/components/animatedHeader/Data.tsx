@@ -3,8 +3,12 @@ import { View, StyleSheet } from 'react-native';
 import { colors, spacing, typography } from '@styles';
 import Animated from 'react-native-reanimated';
 import { MIN_HEADER_HEIGHT } from './Header';
-import { Text } from 'native-base';
+import { Pressable, Text } from 'native-base';
 import { Tabs } from '../Tabs';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { FeatureStackParamsList } from '@src/navigation/tabs/Features';
+import { addTrack, play } from '@src/services/playbackService';
 
 export const albumData = {
     title: 'Hollywood\'s Bleeding',
@@ -16,67 +20,83 @@ export const albumData = {
     tracks: [
         {
             title: 'Hollywood\'s Bleeding',
-            duration: '2:36'
+            duration: '2:36',
+            url: 'https://youtu.be/w5GrxfjuTTI'
         },
         {
             title: 'Saint-Tropez',
-            duration: '2:30'
+            duration: '2:30',
+            url: 'https://youtu.be/MRyLC2M1K2w'
         },
         {
             title: 'Enemies (feat. DaBaby)',
-            duration: '3:16'
+            duration: '3:16',
+            url: 'https://youtu.be/qT_y5Yc8jSA'
         },
         {
             title: 'Allergic',
-            duration: '2:36'
+            duration: '2:36',
+            url: 'https://youtu.be/JdttvuGdlvs'
         },
         {
             title: 'A Thousand Bad Times',
-            duration: '3:41'
+            duration: '3:41',
+            url: 'https://youtu.be/ul-9U681Y2c'
         },
         {
             title: 'Circles',
-            duration: '3:35'
+            duration: '3:35',
+            url: 'https://youtu.be/wXhTHyIgQ_U'
         },
         {
             title: 'Die For Me (feat. Future & Halsey)',
-            duration: '4:05'
+            duration: '4:05',
+            url: 'https://youtu.be/I_QpDE-Uco0'
         },
         {
             title: 'On the Road (feat. Meek Mill & Lil Baby)',
-            duration: '3:38'
+            duration: '3:38',
+            url: 'https://youtu.be/yw_ShLNyHTk'
         },
         {
             title: 'Take What You Want (feat. Ozzy Osbourne & Travis Scott)',
-            duration: '3:49'
+            duration: '3:49',
+            url: 'https://youtu.be/LYa_ReqRlcs'
         },
         {
             title: 'I\'m Gonna Be (feat. Justin Bieber)',
-            duration: '3:20'
+            duration: '3:20',
+            url: 'https://youtu.be/s1XbPXdgEEA'
         },
         {
             title: 'Staring at the Sun (feat. SZA)',
-            duration: '2:48'
+            duration: '2:48',
+            url: 'https://youtu.be/Wq6EeYFiAZU'
         },
         {
             title: 'Internet (feat. Kanye West)',
-            duration: '2:03'
+            duration: '2:03',
+            url: 'https://youtu.be/weXNuvoyEr0'
         },
         {
             title: 'Goodbyes (feat. Young Thug)',
-            duration: '2:54'
+            duration: '2:54',
+            url: 'https://youtu.be/ba7mB8oueCY'
         },
         {
             title: 'Myself',
-            duration: '2:38'
+            duration: '2:38',
+            url: 'https://youtu.be/gqthPT8vK7o'
         },
         {
             title: 'I Know',
-            duration: '2:21'
+            duration: '2:21',
+            url: 'https://youtu.be/k7fiZ_if2Bg'
         },
         {
             title: 'Wow.',
-            duration: '2:29'
+            duration: '2:29',
+            url: 'https://youtu.be/393C3pr2ioY'
         }
     ]
 };
@@ -94,6 +114,7 @@ interface Props {
 const Data = ({ scrollY }: Props) => {
 
     const translateY = Animated.multiply(Animated.min(scrollY, MIN_HEADER_HEIGHT + 40 / 2), -0.00001);
+    const navigation = useNavigation<StackNavigationProp<FeatureStackParamsList>>();
 
     const tabTitles = [
         'Album',
@@ -101,16 +122,22 @@ const Data = ({ scrollY }: Props) => {
         'Artist'
     ];
 
+    const onPressTrack = (trackIndex: number) => {
+
+        navigation.navigate('Player', { trackIndex });
+        addTrack(albumData.tracks[trackIndex]);
+        play();
+    };
 
     const tabComponent: { [key: string]: any } = {
         'Details': <ShowText text={albumData.description} />,
         'Artist': <ShowText text={albumData.about} />,
         'Album': <View style={{ marginTop: 10 }}>
-            {albumData.tracks.map((track, index) => (
-                <View key={index} style={styles.listItem}>
+            {albumData.tracks.map((track, i) => (
+                <Pressable key={track.title} onPress={() => onPressTrack(i)} style={styles.listItem}>
                     <Text style={[styles.text, styles.item]}>{track.title}</Text>
                     <Text style={styles.text}>{track.duration}</Text>
-                </View>
+                </Pressable>
             ))}
         </View>
 
