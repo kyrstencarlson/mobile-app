@@ -14,7 +14,7 @@ const FeatureScreen = () => {
         <Layout style={styles.container}>
             <View style={{ paddingVertical: '20%' }}>
                 <Card onPress={() => navigation.navigate('AnimatedHeader')}>
-                    <Text>Animated Image Header</Text>
+                    <Text>Track Player with Animated Scroll Header</Text>
                 </Card>
             </View>
         </Layout>

@@ -6,3 +6,4 @@
 2. Native Base 3 with Design System
 3. Dark Mode
 4. Animated Image Scroll
+5. React Native Track Player - Album
