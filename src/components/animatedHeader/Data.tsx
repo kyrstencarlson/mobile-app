@@ -8,7 +8,7 @@ import { Tabs } from '../Tabs';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { FeatureStackParamsList } from '@src/navigation/tabs/Features';
-import { addTrack, play } from '@src/services/playbackService';
+import { addTracks, play, reset } from '@src/services/playbackService';
 
 export const albumData = {
     title: 'Hollywood\'s Bleeding',
@@ -21,82 +21,82 @@ export const albumData = {
         {
             title: 'Hollywood\'s Bleeding',
             duration: '2:36',
-            url: 'https://youtu.be/w5GrxfjuTTI'
+            url: require('../../assets/hollywoods-bleeding.mp3')
         },
         {
             title: 'Saint-Tropez',
             duration: '2:30',
-            url: 'https://youtu.be/MRyLC2M1K2w'
+            url: require('../../assets/saint-tropez.mp3')
         },
         {
             title: 'Enemies (feat. DaBaby)',
             duration: '3:16',
-            url: 'https://youtu.be/qT_y5Yc8jSA'
+            url: require('../../assets/enemies.mp3')
         },
         {
             title: 'Allergic',
             duration: '2:36',
-            url: 'https://youtu.be/JdttvuGdlvs'
+            url: require('../../assets/allergic.mp3')
         },
         {
             title: 'A Thousand Bad Times',
             duration: '3:41',
-            url: 'https://youtu.be/ul-9U681Y2c'
+            url: require('../../assets/thousand-bad-times.mp3')
         },
         {
             title: 'Circles',
             duration: '3:35',
-            url: 'https://youtu.be/wXhTHyIgQ_U'
+            url: require('../../assets/circles.mp3')
         },
         {
             title: 'Die For Me (feat. Future & Halsey)',
             duration: '4:05',
-            url: 'https://youtu.be/I_QpDE-Uco0'
+            url: require('../../assets/die-for-me.mp3')
         },
         {
             title: 'On the Road (feat. Meek Mill & Lil Baby)',
             duration: '3:38',
-            url: 'https://youtu.be/yw_ShLNyHTk'
+            url: require('../../assets/on-the-road.mp3')
         },
         {
             title: 'Take What You Want (feat. Ozzy Osbourne & Travis Scott)',
             duration: '3:49',
-            url: 'https://youtu.be/LYa_ReqRlcs'
+            url: require('../../assets/take-what-you-want.mp3')
         },
         {
             title: 'I\'m Gonna Be (feat. Justin Bieber)',
             duration: '3:20',
-            url: 'https://youtu.be/s1XbPXdgEEA'
+            url: require('../../assets/im-gonna-be.mp3')
         },
         {
             title: 'Staring at the Sun (feat. SZA)',
             duration: '2:48',
-            url: 'https://youtu.be/Wq6EeYFiAZU'
+            url: require('../../assets/staring-at-the-sun.mp3')
         },
         {
             title: 'Internet (feat. Kanye West)',
             duration: '2:03',
-            url: 'https://youtu.be/weXNuvoyEr0'
+            url: require('../../assets/internet.mp3')
         },
         {
             title: 'Goodbyes (feat. Young Thug)',
             duration: '2:54',
-            url: 'https://youtu.be/ba7mB8oueCY'
+            url: require('../../assets/goodbyes.mp3')
         },
         {
             title: 'Myself',
             duration: '2:38',
-            url: 'https://youtu.be/gqthPT8vK7o'
+            url: require('../../assets/myself.mp3')
         },
         {
             title: 'I Know',
             duration: '2:21',
-            url: 'https://youtu.be/k7fiZ_if2Bg'
+            url: require('../../assets/i-know.mp3')
         },
         {
             title: 'Wow.',
             duration: '2:29',
-            url: 'https://youtu.be/393C3pr2ioY'
+            url: require('../../assets/wow.mp3')
         }
     ]
 };
@@ -124,8 +124,17 @@ const Data = ({ scrollY }: Props) => {
 
     const onPressTrack = (trackIndex: number) => {
 
+        reset();
         navigation.navigate('Player', { trackIndex });
-        addTrack(albumData.tracks[trackIndex]);
+
+        const tracks = albumData.tracks.slice(trackIndex, albumData.tracks.length).map(track => ({
+            url: track.url,
+            title: track.title,
+            artist: albumData.artist,
+            artwork: require('../../assets/posty.jpeg')
+        }));
+
+        addTracks(tracks);
         play();
     };
 

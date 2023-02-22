@@ -18,6 +18,10 @@ export const playbackService = async () => {
     TrackPlayer.addEventListener(Event.RemotePause, () => TrackPlayer.pause());
 };
 
+export const reset = async () => {
+    await TrackPlayer.reset();
+};
+
 export const addTracks = async (tracks: Track[]) => {
     await TrackPlayer.add(tracks);
 };

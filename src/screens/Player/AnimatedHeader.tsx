@@ -6,7 +6,7 @@ import Animated, { multiply, min } from 'react-native-reanimated';
 import { albumData, Content, Cover, Header, HEADER_DELTA, MAX_HEADER_HEIGHT } from '@components/animatedHeader';
 import { colors } from '@styles';
 import { FeatureStackParamsList } from '../../navigation/tabs/Features';
-import { addTracks, play, setupPlayer } from '@src/services/playbackService';
+import { addTracks, play, reset, setupPlayer } from '@src/services/playbackService';
 
 
 export type Props = StackScreenProps<FeatureStackParamsList, 'AnimatedHeader'>;
@@ -26,6 +26,8 @@ const AnimatedHeader = ({ navigation }: Props) => {
     setupPlayer();
 
     const queueAllAndPlay = () => {
+
+        reset();
         addTracks(tracks);
         navigation.navigate('Player', { trackIndex: 0 });
         play();
